@@ -1,0 +1,165 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace assign2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            generalmanager m = new generalmanager(11000,"sm","akash",1,45000);
+            Console.WriteLine(m.grossnetsalary());
+            Console.ReadLine();
+
+        }
+
+        public abstract class employee
+        {
+            public static int auto;
+            public int empno;
+            public string name;
+            public short deptno;
+            public decimal basicsal;
+            public int Empno
+            {
+                get
+                {
+                    return empno;
+
+                }
+            }
+            public string Name
+            {
+                set
+                {
+                    if (value != null)
+                    {
+                        name = value;
+                    }
+                    else
+                        Console.WriteLine("name should not be empty");
+                }
+                get
+                {
+                    return name;
+                }
+            }
+            public short Deptno
+            {
+                set
+                {
+                    if (value > 0)
+                    {
+                        deptno = value;
+                    }
+                    else
+                        Console.WriteLine("Dept no must be greaterthan Zero");
+                }
+                get
+                {
+                    return deptno;
+                }
+            }
+            public abstract decimal Basicsal
+            {
+                set;
+                get;
+            }
+            public abstract decimal grossnetsalary();
+
+            public employee(string name, short deptno, decimal basicsal)
+            {
+                auto++;
+                this.empno = auto;
+                this.name = name;
+                this.deptno = deptno;
+                this.basicsal = basicsal;
+
+            }
+        }
+            public class manager : employee
+            {
+                private string designation;
+                public string Designation
+                {
+                    set
+                    {
+                        if (value != null)
+                        {
+                            designation = value;
+                        }
+                        else
+                            Console.WriteLine("Designation cant be null");
+                    }
+                    get
+                    {
+                        return designation;
+                    }
+                }
+                public override decimal Basicsal
+                {
+                    set
+                    {
+                        basicsal = value;
+                    }
+                    get
+                    {
+                        return basicsal;
+                    }
+                }
+                public override decimal grossnetsalary()
+                {
+                    decimal netsalary;
+                    netsalary = basicsal + 2000 + 1000;
+                    return netsalary;
+                }
+                public manager(string designation, string name, short deptno, decimal basicsal) : base(name, deptno, basicsal)
+                {
+                    this.designation = designation;
+                }
+            }
+            public class generalmanager : employee
+            {
+                private int perks;
+                public int Perks
+                {
+                    set
+                    {
+                        if (value > 10000)
+                            perks = value;
+                        else
+                            Console.WriteLine("perks must be greaterthan 10000");
+
+                    }
+                    get
+                    {
+                        return perks;
+                    }
+                }
+                public override decimal Basicsal
+                {
+                    set
+                    {
+                        basicsal = value;
+                    }
+                    get
+                    {
+                        return basicsal;
+                    }
+                }
+                public generalmanager(int perks, string designation, string name, short deptno, decimal basicsal) : base(name, deptno, basicsal)
+                {
+                    this.perks = perks;
+                }
+                public override decimal grossnetsalary()
+                {
+                    decimal netsalary;
+                    netsalary = basicsal + 2000 + 1000;
+                    return netsalary;
+                }
+            }
+     }
+ }
