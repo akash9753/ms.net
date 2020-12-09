@@ -1,0 +1,128 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Collection
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //2. Create an array of Employee objects. Convert it to a List<Employee>.  Display all the Employees in the list.
+            /*employee[] e = new employee[5];
+            e[0] = new employee("t1", 99, 45000);
+            e[1] = new employee("t2", 89, 65000);
+            e[2] = new employee("t3", 79, 75000);
+            e[3] = new employee("t4", 69, 85000);
+            e[4] = new employee("t5", 59, 95000);
+
+            /*for (int i = 0; i < e.Length; i++)
+            {
+                e[i].display();
+            }*/
+            /*List<employee> copyarrobj = new List<employee>(e);
+            foreach(employee newemp in copyarrobj)
+            {
+                Console.WriteLine("Empno : " + newemp .empno);
+                Console.WriteLine("Name : " + newemp.name);
+                Console.WriteLine("Deptno : " + newemp.deptno);
+                Console.WriteLine("basicsal : " + newemp.basicsal);
+            }
+
+
+
+            //3. Create a List<Employee>. Convert it to an array. Display all the array elements.
+            List<employee> list = new List<employee>();
+            list.Add(new employee("t1", 99, 45000));
+            list.Add(new employee("t2", 89, 55000));
+            list.Add(new employee("t3", 79, 65000));
+            list.Add(new employee("t4", 69, 75000));
+            list.Add(new employee("t5", 59, 85000));
+            foreach(employee emp in list)
+            {
+                Console.WriteLine("Empno : " + emp.empno);
+                Console.WriteLine("Name : " + emp.name);
+                Console.WriteLine("Deptno : " + emp.deptno);
+                Console.WriteLine("basicsal : " + emp.basicsal);
+            }
+            employee[] emparr = list.ToArray();
+            foreach (employee emp in emparr)
+            {
+                Console.WriteLine("Empno : " + emp.empno);
+                Console.WriteLine("Name : " + emp.name);
+                Console.WriteLine("Deptno : " + emp.deptno);
+                Console.WriteLine("basicsal : " + emp.basicsal);
+            }*/
+            SortedList<int, employee> objemp = new SortedList<int, employee>();
+            int k=0;
+            {
+                /*Console.WriteLine("Enter the number of Employees");
+                int n = Convert.ToInt32(Console.ReadLine());
+                for (int i = 0; i < n; i++)
+                {
+                    
+                    Console.Write("Enter Name: ");
+                    String name = Console.ReadLine();
+
+                    Console.Write("Enter Deptno: ");
+                    short deptno = short.Parse(Console.ReadLine());
+                    
+                    Console.Write("Enter Basicsal: ");
+                    decimal basicsal = decimal.Parse(Console.ReadLine());
+                   
+
+                    objemp.Add(++k, new employee(name,  deptno, basicsal));*/
+
+                    objemp.Add(++k, new employee("t1", 99, 45000));
+                    objemp.Add(++k, new employee("t2", 89, 55000));
+                    objemp.Add(++k, new employee("t3", 79, 65000));
+                    objemp.Add(++k, new employee("t4", 69, 75000));
+                    objemp.Add(++k, new employee("t5", 59, 85000));
+
+                Console.WriteLine();
+                foreach (KeyValuePair<int, employee> objDic in objemp)
+                {
+
+                    Console.WriteLine("Empno : " + objDic.Value.empno);
+                    Console.WriteLine("name : " + objDic.Value.name);
+                    Console.WriteLine("deptno : " + objDic.Value.deptno);
+                    Console.WriteLine("basicsal : " + objDic.Value.basicsal);
+                }
+                Console.ReadLine();
+            }
+                
+            
+            
+        }
+        
+    }
+    public class employee
+    {
+        public static int auto;
+        public int empno;
+        public string name;
+        public short deptno;
+        public decimal basicsal;
+
+        public employee( string name, short deptno, decimal basicsal)
+        {
+            auto++;
+            this.empno = auto;
+            this.name= name;
+            this.deptno = deptno;
+            this.basicsal = basicsal;
+        }
+
+        public void display()
+        {
+            Console.WriteLine("empno : "+this.empno);
+            Console.WriteLine("name : " + this.name);
+            Console.WriteLine("deptno : " + this.deptno);
+            Console.WriteLine("basicsal : " + this.basicsal);
+            
+        }
+
+    }
+}
