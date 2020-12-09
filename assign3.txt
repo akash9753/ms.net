@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace array
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            employee[] e = new employee[5];
+            e[0] = new employee("t1", 99, 45000);
+            e[1] = new employee("t2", 89, 65000);
+            e[2] = new employee("t3", 79, 75000);
+            e[3] = new employee("t4", 69, 85000);
+            e[4] = new employee("t5", 59, 95000);
+            /*Console.WriteLine("enter the details of employee");
+            employee[] e = new employee[5];
+            for (int i = 0; i < e.Length; i++)
+            {
+                Console.WriteLine("Name : ");
+                string name = Console.ReadLine();
+
+                Console.Write("Deptno : ");
+                short deptno = short.Parse(Console.ReadLine());
+
+                Console.Write("Basicsal : ");
+                decimal basicsal = Convert.ToDecimal(Console.ReadLine());
+
+                employee e1 = new employee(name, deptno, basicsal);
+                e[i] = e1;
+
+                
+
+            }*/
+            Console.WriteLine("enter empid u want the details of employee");
+            int empid = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < e.Length; i++)
+            {
+                if(empid == e[i].empno)
+                {
+                    e[i].display();
+                }
+            }
+            decimal max = e[0].basicsal;
+            for (int i = 0; i < e.Length; i++)
+            {
+                if(e[i].basicsal > max)
+                {
+                    max = e[i].basicsal;
+                }
+            }
+            for (int i = 0; i < e.Length; i++)
+            {
+                if(e[i].basicsal ==max)
+                {
+                    Console.WriteLine("employee has max salary:"+e[i].basicsal);
+                    e[i].display();
+                }
+            }
+            
+                Console.ReadLine();
+        }
+
+        public class employee
+        {
+            public static int auto;
+            public int empno;
+            public string name;
+            public short deptno;
+            public decimal basicsal;
+
+            public employee(string name, short deptno, decimal basicsal)
+            {
+                auto++;
+                this.empno = auto;
+                this.name = name;
+                this.deptno = deptno;
+                this.basicsal = basicsal;
+
+            }
+            public void display()
+            {
+                Console.WriteLine("empno : " + this.empno);
+                Console.WriteLine("name : " + this.name);
+                Console.WriteLine("deptno : " + this.deptno);
+                Console.WriteLine("basicsal : " + this.basicsal);
+            }
+        }
+    }
+}
